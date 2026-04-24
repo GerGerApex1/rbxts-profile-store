@@ -12,14 +12,14 @@ export interface Profile<Template extends object, RobloxMetadata extends object 
 	 *
 	 * If needed, you may set Profile.Data to a new table reference (e.g. Profile.Data = {}). When Profile:IsActive() returns false changes to Profile.Data are no longer stored to the DataStore.
 	 */
-	Data: Template;
+	Data: JSONAcceptable;
 
-	/**
+	/**	
 	 * This is a version of Profile.Data that has been successfully stored to the DataStore.
 	 *
 	 * Useful for verifying what particular data has been saved, or for securely handling developer product purchases.
 	 */
-	readonly LastSavedData: Template;
+	readonly LastSavedData: JSONAcceptable;
 
 	/**
 	 * A Unix timestamp of when the profile was created.
@@ -104,7 +104,7 @@ export interface Profile<Template extends object, RobloxMetadata extends object 
 	/**
 	 * The ProfileStore object that was used to create this profile.
 	 */
-	readonly ProfileStore: Store<Template>;
+	readonly ProfileStore: JSONAcceptable;
 
 	/**
 	 * The DataStore key of this profile. This is the first passed argument to ProfileStore:StartSessionAsync() or ProfileStore:GetAsync().
@@ -140,7 +140,7 @@ export interface Profile<Template extends object, RobloxMetadata extends object 
 	AddUserId(userId: number): void;
 
 	/**
-	 * Unassociates a UserId with the profile.
+	 *  Removes user_id association with profile
 	 */
 	RemoveUserId(userId: number): void;
 
